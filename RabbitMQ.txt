@@ -1,0 +1,53 @@
+RabbitMQ, bir sistemin farklı bölümleri arasında iletişimin gerekli olduğu çeşitli senaryolarda yaygın olarak kullanılan sağlam bir mesajlaşma aracısıdır. 
+Aşağıda RabbitMQ'nun kullanıldığı üç farklı kullanım durumu yer almaktadır:
+
+1. Mikro Hizmet Mimarisinde Görev Kuyruğu Yönetimi
+
+Kullanım Örneği:
+
+Bir mikro hizmet mimarisinde, farklı hizmetlerin genellikle birbirleriyle iletişim kurması gerekir. Örneğin, bir e-ticaret platformunda, bir kullanıcı bir 
+sipariş verdiğinde, envanter yönetimi, ödeme işleme ve sipariş yerine getirme gibi birkaç mikro hizmet dahil olabilir. Sipariş sürecini tamamlamak için bu 
+hizmetlerin birlikte çalışması gerekir.
+
+Ayrıntılar:
+
+RabbitMQ, görev kuyrukları aracılığıyla bu mikro hizmetler arasındaki iletişimi yönetmek için kullanılabilir. 
+
+Nasıl Çalışır:
+
+Sipariş Hizmeti: Bir sipariş verildiğinde, sipariş hizmeti bir RabbitMQ kuyruğuna bir mesaj gönderir.
+Envanter Hizmeti: Envanter hizmeti kuyruğu dinler ve envanteri güncelleyerek mesajı işler.
+Ödeme Hizmeti: Benzer şekilde, ödeme hizmeti ödemeyi işleme koyma görevini üstlenir.
+Bildirim Hizmeti: Ödeme başarılı olduğunda, kullanıcıyı bilgilendirmek için bir mesaj gönderilebilir.
+
+2. Gerçek Zamanlı İşleme için Olay Güdümlü Sistemler
+
+Kullanım Örneği:
+
+RabbitMQ, sistemlerin olaylara gerçek zamanlı olarak yanıt vermesi gereken olay odaklı mimarilerde kullanılır. Bu, finansal ticaret sistemlerinde, çevrimiçi 
+oyun platformlarında ve IoT (Nesnelerin İnterneti) ortamlarında yaygındır.
+
+Ayrıntılar:
+
+İşlemlerin piyasa olaylarına göre işlendiği bir finansal ticaret platformu düşünün;
+
+Piyasa Verisi Alımı: Piyasa verileri (hisse senedi fiyatları gibi) gerçek zamanlı olarak aktarılır.
+İşlem Motoru: Bir alım satım motoru, fiyat değişiklikleri gibi belirli olayları dinler ve önceden tanımlanmış kurallara göre alım veya satım kararları verir.
+Olay Yayılımı için RabbitMQ: Piyasa verileri RabbitMQ borsalarında mesaj olarak yayınlanır. Ticaret motoru bu mesajlara abone olur ve olaylara anında tepki verir.
+Bu kurulum, alım satım motorunun yüksek hacimli olayları minimum gecikmeyle işlemesine olanak tanıyarak alım satımların zamanında gerçekleştirilmesini sağlar.
+
+3. Web Uygulamalarında Asenkron İletişim
+
+Kullanım Örneği:
+
+RabbitMQ genellikle web uygulamalarında e-posta gönderme, görüntü işleme veya rapor oluşturma gibi arka plan görevlerini yerine getirmek için kullanılır.
+
+Ayrıntılar:
+
+Kullanıcıların resim yükleyebildiği ve bu resimlerin görüntülenmeden önce işlenmesi (örneğin yeniden boyutlandırılması, filtrelenmesi) gereken bir web uygulaması 
+düşünün:
+
+Kullanıcı Yüklemesi: Bir kullanıcı bir görüntü yüklediğinde, uygulama yüklemeyi kabul eder ve kullanıcıya hemen bir yanıt döndürür, böylece görüntünün işlenmesini 
+beklemek zorunda kalmaz.
+Arka Plan Görevleri için RabbitMQ: Görüntü işleme görevi daha sonra bir RabbitMQ kuyruğuna mesaj olarak gönderilir.
+İşçi Hizmeti: Kuyruğu dinleyen bir işçi hizmeti, görüntü işleme görevini alır ve gerekli işlemleri eşzamansız olarak gerçekleştirir.

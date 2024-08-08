@@ -1,0 +1,70 @@
+Reddis; hızı, çok yönlülüğü ve farklı veri yapılarını desteklemesi sayesinde çeşitli kullanım durumları için yaygın olarak kullanılan güçlü bir bellek içi
+veri yapısı deposudur. Aşağıda Redis'in etkin bir şekilde kullanıldığı üç farklı kullanım durumu yer almaktadır:
+
+1. Önbellekleme Katmanı
+
+Kullanım Örneği: Web Uygulaması Performans İyileştirme
+
+Ayrıntılar:
+
+Web uygulamalarının performansını artırmak için bir önbellek katmanı olarak kullanılabilir. Bu senaryoda sık erişilen verileri bellekte depolar, bu da daha yavaş
+bir arka uç veritabanından veya harici API'den veri getirmeye kıyasla daha hızlı erişim sağlar.
+
+Nasıl Çalışır:
+
+Kullanıcı verileri için bir veritabanını sorgulayan bir web uygulaması, bu sorguların sonuçlarını önbelleğe almak için Redis'i kullanabilir. Bir kullanıcı aynı 
+veriyi talep ettiğinde, uygulama önce Reddis'i kontrol eder. Veri önbellekte bulunursa, veri tabanı atlanarak doğrudan Redis'ten döndürülür. 
+Veriler Reddis'te değilse, uygulama veritabanını sorgular, sonucu Redis'te saklar ve ardından verileri kullanıcıya sunar.
+
+Avantajları:
+
+Kendini tekrarlayan veritabanı sorgularından kaçınarak gecikmeyi azaltır.
+Veritabanı üzerindeki yükü azaltır, bu da genel sistem performansını ve ölçeklenebilirliği artırabilir.
+Önbelleğe alınan veriler için sona erme sürelerini ayarlama olanağı sağlayarak eski verilerin eninde sonunda yenilenmesini sağlar.
+
+2. Oturum Yönetimi
+
+Kullanım Örneği: Dağıtık Sistemlerde Kullanıcı Oturumlarını Yönetme
+
+Ayrıntılar:
+
+Redis genellikle web uygulamalarında, özellikle de uygulamanın birden fazla sunucuya dağıtıldığı dağıtık sistemlerde kullanıcı oturumu verilerini depolamak için
+kullanılabilir. Örneğin, sunucu belleği veya veritabanı depolaması kullanan geleneksel oturum yönetimi bu tür ortamlarda sorunlu olabilir, ancak Redis kullanıldığında
+merkezi ve hızlı bir çözüm sunar.
+
+Nasıl Çalışır:
+
+Bir kullanıcı bir web uygulamasında oturum açtığında, bir oturum oluşturulur ve anahtar olarak benzersiz bir oturum kimliği ile Reddis'te saklanır. Bu oturum,
+kullanıcı tercihleri, kimlik doğrulama belirteçleri veya diğer durum bilgileri gibi verileri içerebilir. Kullanıcı uygulamada gezinirken, oturum verileri oturum 
+kimliği kullanılarak Reddis'ten alınır.
+Reddis bellek içi olduğundan ve yüksek verimi desteklediğinden, çok sayıda oturumu aynı anda işleyebilir. Dolayısyla yoğun kullanıcı trafiğine sahip uygulamalar 
+için idealdir.
+
+Avantajları:
+
+Dağıtılmış bir ortamda birden fazla sunucuda tutarlı oturum yönetimi sağlar.
+Hızlı okuma/yazma işlemleri sunarak oturum verilerine hızla erişilmesini sağlar.
+Veri süresinin dolmasını destekler, oturum verilerinin belirli bir süre sonra otomatik olarak sona ermesini sağlayarak güvenliği ve kaynak yönetimini iyileştirir.
+
+3. Gerçek Zamanlı Analitik
+
+Kullanım Örneği: Gerçek Zamanlı Veri Akışlarının İşlenmesi
+
+Ayrıntılar:
+
+Reddis, verileri anında toplamak ve analiz etmek için gerçek zamanlı analitik sistemlerinde kullanılır. Bellek içi veriler üzerinde yüksek hızlı işlemler 
+gerçekleştirme yeteneği, verilerin gerçek zamanlı olarak işlenmesi gereken senaryolar için çok uygundur.
+
+Nasıl Çalışır:
+
+Oyuncu skorlarını, oyun durumlarını veya liderlik tablolarını gerçek zamanlı olarak takip etmesi gereken bir çevrimiçi oyun platformu düşünün. Reddis, olaylar
+gerçekleştikçe bu ölçümleri depolamak ve güncellemek için kullanılabilir. Sıralanmış kümeler gibi Reddis veri yapılarını kullanarak, puanların gerçek zamanlı 
+olarak güncellendiği ve hızlı bir şekilde sorgulanabildiği bir liderlik tablosu tutmak mümkündür.
+Reddis'in Pub/Sub (yayınla/abone ol) mekanizması, bir oyuncunun yeni bir yüksek skor elde etmesi gibi belirli olaylar meydana geldiğinde sistemin çeşitli 
+bölümlerini bilgilendirmek için de kullanılabilir ve sistemin anında tepki vermesini sağlar.
+
+Avantajları:
+
+Gerçek zamanlı karar verme ve sistemde dinamik güncellemeler sağlar.
+Yüksek hızlı veri akışlarını verimli bir şekilde işler.
+Gösterge tabloları ve izleme sistemleri için gerekli olan karmaşık sorguları ve toplama işlemlerini gerçek zamanlı olarak destekler.
