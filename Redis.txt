@@ -1,5 +1,4 @@
-Redis; hızı, çok yönlülüğü ve farklı veri yapılarını desteklemesi sayesinde çeşitli kullanım durumları için yaygın olarak kullanılan güçlü bir bellek içi
-veri yapısı deposudur. Aşağıda Redis'in etkin bir şekilde kullanıldığı üç farklı kullanım durumu yer almaktadır:
+Redis; hızı, çok yönlülüğü ve farklı veri yapılarını desteklemesi sayesinde çeşitli kullanım durumları için yaygın olarak kullanılan güçlü bir bellek içi veri yapısı deposudur. Aşağıda Redis'in etkin bir şekilde kullanıldığı üç farklı kullanım durumu yer almaktadır:
 
 1. Önbellekleme Katmanı
 
