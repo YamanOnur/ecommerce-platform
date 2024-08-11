@@ -1,4 +1,4 @@
-Reddis; hızı, çok yönlülüğü ve farklı veri yapılarını desteklemesi sayesinde çeşitli kullanım durumları için yaygın olarak kullanılan güçlü bir bellek içi
+Redis; hızı, çok yönlülüğü ve farklı veri yapılarını desteklemesi sayesinde çeşitli kullanım durumları için yaygın olarak kullanılan güçlü bir bellek içi
 veri yapısı deposudur. Aşağıda Redis'in etkin bir şekilde kullanıldığı üç farklı kullanım durumu yer almaktadır:
 
 1. Önbellekleme Katmanı
@@ -13,8 +13,8 @@ bir arka uç veritabanından veya harici API'den veri getirmeye kıyasla daha h�
 Nasıl Çalışır:
 
 Kullanıcı verileri için bir veritabanını sorgulayan bir web uygulaması, bu sorguların sonuçlarını önbelleğe almak için Redis'i kullanabilir. Bir kullanıcı aynı 
-veriyi talep ettiğinde, uygulama önce Reddis'i kontrol eder. Veri önbellekte bulunursa, veri tabanı atlanarak doğrudan Redis'ten döndürülür. 
-Veriler Reddis'te değilse, uygulama veritabanını sorgular, sonucu Redis'te saklar ve ardından verileri kullanıcıya sunar.
+veriyi talep ettiğinde, uygulama önce Redis'i kontrol eder. Veri önbellekte bulunursa, veri tabanı atlanarak doğrudan Redis'ten döndürülür. 
+Veriler Redis'te değilse, uygulama veritabanını sorgular, sonucu Redis'te saklar ve ardından verileri kullanıcıya sunar.
 
 Avantajları:
 
@@ -36,8 +36,8 @@ Nasıl Çalışır:
 
 Bir kullanıcı bir web uygulamasında oturum açtığında, bir oturum oluşturulur ve anahtar olarak benzersiz bir oturum kimliği ile Reddis'te saklanır. Bu oturum,
 kullanıcı tercihleri, kimlik doğrulama belirteçleri veya diğer durum bilgileri gibi verileri içerebilir. Kullanıcı uygulamada gezinirken, oturum verileri oturum 
-kimliği kullanılarak Reddis'ten alınır.
-Reddis bellek içi olduğundan ve yüksek verimi desteklediğinden, çok sayıda oturumu aynı anda işleyebilir. Dolayısyla yoğun kullanıcı trafiğine sahip uygulamalar 
+kimliği kullanılarak Redis'ten alınır.
+Redis bellek içi olduğundan ve yüksek verimi desteklediğinden, çok sayıda oturumu aynı anda işleyebilir. Dolayısyla yoğun kullanıcı trafiğine sahip uygulamalar 
 için idealdir.
 
 Avantajları:
@@ -52,15 +52,15 @@ Kullanım Örneği: Gerçek Zamanlı Veri Akışlarının İşlenmesi
 
 Ayrıntılar:
 
-Reddis, verileri anında toplamak ve analiz etmek için gerçek zamanlı analitik sistemlerinde kullanılır. Bellek içi veriler üzerinde yüksek hızlı işlemler 
+Redis, verileri anında toplamak ve analiz etmek için gerçek zamanlı analitik sistemlerinde kullanılır. Bellek içi veriler üzerinde yüksek hızlı işlemler 
 gerçekleştirme yeteneği, verilerin gerçek zamanlı olarak işlenmesi gereken senaryolar için çok uygundur.
 
 Nasıl Çalışır:
 
-Oyuncu skorlarını, oyun durumlarını veya liderlik tablolarını gerçek zamanlı olarak takip etmesi gereken bir çevrimiçi oyun platformu düşünün. Reddis, olaylar
-gerçekleştikçe bu ölçümleri depolamak ve güncellemek için kullanılabilir. Sıralanmış kümeler gibi Reddis veri yapılarını kullanarak, puanların gerçek zamanlı 
+Oyuncu skorlarını, oyun durumlarını veya liderlik tablolarını gerçek zamanlı olarak takip etmesi gereken bir çevrimiçi oyun platformu düşünün. Redis, olaylar
+gerçekleştikçe bu ölçümleri depolamak ve güncellemek için kullanılabilir. Sıralanmış kümeler gibi Redis veri yapılarını kullanarak, puanların gerçek zamanlı 
 olarak güncellendiği ve hızlı bir şekilde sorgulanabildiği bir liderlik tablosu tutmak mümkündür.
-Reddis'in Pub/Sub (yayınla/abone ol) mekanizması, bir oyuncunun yeni bir yüksek skor elde etmesi gibi belirli olaylar meydana geldiğinde sistemin çeşitli 
+Redis'in Pub/Sub (yayınla/abone ol) mekanizması, bir oyuncunun yeni bir yüksek skor elde etmesi gibi belirli olaylar meydana geldiğinde sistemin çeşitli 
 bölümlerini bilgilendirmek için de kullanılabilir ve sistemin anında tepki vermesini sağlar.
 
 Avantajları:
