@@ -9,6 +9,7 @@
 2. Nanigate to the project directory:
    ```bash
    cd ecommerce-platform
+   cd ecommerce-platform
 
 3. Build and start the containers:
    ```bash
