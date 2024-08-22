@@ -4,7 +4,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YourUsername/ecommerce-platform.git
+   git clone https://github.com/YamanOnur/ecommerce-platform.git
 
 2. Nanigate to the project directory:
    ```bash
